@@ -37,23 +37,17 @@ $.get("/assets/user_data/GamesList.json", function (gamesList) {
 
     // Set image data
     var count = 0;
-    for (const [gameId, gameName] of Object.entries(gamesList)) {
-        var allEntries = document.getElementById("games-body").children;
+    var allEntries = document.getElementById("games-body").children;
+    
+    for (var i = 0; i < allEntries.length; i++) {
+        var row = allEntries[i];
         
-        for (var i = 0; i < allEntries.length; i++) {
-            var row = allEntries[i];
-            count += 4;
-
-            var n = 0;
-            
-            for (var n = 0; n < row.children.length; n++) {
-                var elem = row.children[n];
-
-                var elems = elem.children;
-                elems[0].src = "https://m.media-amazon.com/images/I/61RDD36KWPL._AC_.jpg";
-                elems[1].innerHTML = Object.values(gamesList)[n];
-                elems[2].href = "./player.html#" + Object.keys(gamesList)[n];
-            };
+        for (var n = n && 0; n < row.children.length; n++) {
+            var elem = row.children[n];
+            var elems = elem.children;
+            elems[0].src = "https://m.media-amazon.com/images/I/61RDD36KWPL._AC_.jpg";
+            elems[1].innerHTML = Object.values(gamesList)[n];
+            elems[2].href = "./player.html#" + Object.keys(gamesList)[n];
         };
     };
 });
