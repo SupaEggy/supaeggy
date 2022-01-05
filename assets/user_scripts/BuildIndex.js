@@ -1,4 +1,4 @@
-var columns = 6;
+var columns = 4;
 
 $.get("/assets/user_data/GamesList.json", function (gamesList) {
     // Build the first cell
@@ -9,7 +9,11 @@ $.get("/assets/user_data/GamesList.json", function (gamesList) {
     tableBody.innerHTML += "<tr class=\"games-container-row\"></tr>"
     for (var i = 0; i < columns; i++) {
         $(".games-container-row")[0].innerHTML += `
-        <td><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png"></td>
+        <td>
+        <img width=200 src="https://cdn.gamer-network.net/2014/usgamer/pokemonboxart.jpg">
+        <h3>GameName</h3>
+        <a>GameLink</a>
+        </td>
         `;
     }
 
@@ -21,6 +25,13 @@ $.get("/assets/user_data/GamesList.json", function (gamesList) {
         var tr = $(".games-container-row")[0];
         var cloned = tr.cloneNode(true);
         $("#games-body")[0].appendChild(cloned);
+
+        var imageCount = (i + 1) * columns;
+    };
+
+    // remove unnecessary images
+    if (imageCount !== gamesCount) {
+        var extraImages = imageCount - gamesCount;
     };
 
 
